@@ -6,19 +6,12 @@ import { default as countries } from "./countries.json";
 import "tui-chart/dist/tui-chart.css";
 import "tui-chart/dist/maps/world";
 import "./App.css";
-import TuiChart from "tui-chart";
 import WorldWideCases from "./components/WorldwideCases";
 import { formatTableViewData } from "./utils";
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function App() {
-  const theme = {
-    series: {
-      startColor: "#ffefef",
-      endColor: "#ac4142",
-      overColor: "#75b5aa"
-    }
-  };
-  TuiChart.registerTheme("theme", theme);
   const [allData, setAllData] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   useEffect(() => {
@@ -42,6 +35,12 @@ function App() {
     alignItems: "center",
     flexDirection: "column"
   };
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
+
   return (
     <div style={styles}>
       <h1>Coronavirus (COVID-19) Global Statistics</h1>
@@ -49,7 +48,7 @@ function App() {
         <div style={flexContainer}>
           <MapViewGoogle data={allData}></MapViewGoogle>
           <WorldWideCases data={allData}></WorldWideCases>
-          <div className='tableView'>
+          <div className="tableView">
             <table>
               <thead>
                 <tr>
@@ -72,6 +71,14 @@ function App() {
             </table>
           </div>
         </div>
+      )}
+      {isFetching && (
+        <ClipLoader
+          css={override}
+          size={150}
+          color={"#123abc"}
+          loading={isFetching}
+        />
       )}
     </div>
   );

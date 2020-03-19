@@ -3,6 +3,7 @@ import { Chart } from "react-google-charts";
 import { formatWorldWideCasesChartData } from "../utils";
 
 function WorldWideCases({ data }) {
+  
   return (
     <Chart
       height={"400px"}
