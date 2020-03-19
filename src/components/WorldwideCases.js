@@ -6,13 +6,13 @@ function WorldWideCases({ data }) {
   return (
     <Chart
       height={"400px"}
-      width={"80%"}
+      width={"90%"}
       chartType="BarChart"
       loader={<div>Loading Chart</div>}
       data={formatWorldWideCasesChartData(data)}
       options={{
         title: "Top 10 Affected Countries",
-        chartArea: { width: "80%" },
+        chartArea: { width: "90%" },
         isStacked: true,
         hAxis: {
           title: "People Affected",
