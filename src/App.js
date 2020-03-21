@@ -39,7 +39,7 @@ function App() {
   const override = css`
     display: block;
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 50px;
     border-color: red;
   `;
 
