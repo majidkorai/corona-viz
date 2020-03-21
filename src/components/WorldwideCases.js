@@ -6,7 +6,7 @@ function WorldWideCases({ data }) {
   
   return (
     <Chart
-      height={"500px"}
+      height={"450px"}
       width={"90%"}
       chartType="BarChart"
       loader={<div>Loading Chart</div>}

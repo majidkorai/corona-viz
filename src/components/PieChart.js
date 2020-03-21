@@ -10,8 +10,10 @@ function PieChartView({ data }) {
       loader={<div>Loading Chart</div>}
       data={formatPieChartData(data)}
       options={{
-        title: "Country Wise Total Cases",
+        // title: "Country Wise Total Cases",
         legend: 'none',
+        pieSliceText: 'label',
+        sliceVisibilityThreshold: 0.03
       }}
       rootProps={{ "data-testid": "1" }}
     />
