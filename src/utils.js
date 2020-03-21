@@ -35,11 +35,21 @@ export function formatWorldWideCasesChartData(data) {
   chartData.sort(function(a, b) {
     return b.confirmed - a.confirmed;
   });
-  let transformedData = chartData.slice(0, 10).map(c => {
+  let transformedData = chartData.slice(0, 5).map(c => {
     return [c.country, c.confirmed, c.deaths, c.recovered];
   });
   return [
     ["Country", "Confirmed Cases", "Deaths", "Recovered"],
+    ...transformedData
+  ];
+}
+export function formatPieChartData(data) {
+  let chartData = getGroupedData(data);
+  let transformedData = chartData.map(c => {
+    return [c.country, c.confirmed];
+  });
+  return [
+    ['Country', 'Cases'],
     ...transformedData
   ];
 }

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import MapView from "./MapView";
-import MapViewGoogle from "./components/MapView";
 import axios from "axios";
 import { default as countries } from "./countries.json";
 import "tui-chart/dist/tui-chart.css";
 import "tui-chart/dist/maps/world";
 import "./App.css";
 import WorldWideCases from "./components/WorldwideCases";
+import MapViewGoogle from "./components/MapView";
+import PieChartView from "./components/PieChart";
 import { formatTableViewData } from "./utils";
 import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function App() {
   const [allData, setAllData] = useState([]);
@@ -38,6 +39,7 @@ function App() {
   const override = css`
     display: block;
     margin: 0 auto;
+    padding-top: 30px;
     border-color: red;
   `;
 
@@ -47,6 +49,7 @@ function App() {
       {!isFetching && (
         <div style={flexContainer}>
           <MapViewGoogle data={allData}></MapViewGoogle>
+          <PieChartView data={allData}></PieChartView>
           <WorldWideCases data={allData}></WorldWideCases>
           <div className="tableView">
             <table>
@@ -73,9 +76,9 @@ function App() {
         </div>
       )}
       {isFetching && (
-        <ClipLoader
+        <ScaleLoader
           css={override}
-          size={150}
+          size={35}
           color={"#123abc"}
           loading={isFetching}
         />

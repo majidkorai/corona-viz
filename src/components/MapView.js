@@ -4,8 +4,8 @@ import { formatMapViewData } from "../utils";
 function MapView({ data }) {
   return (
     <Chart
-       height={"400px"}
-      width={"80%"}
+      height={"350px"}
+      width={"90%"}
       chartType="GeoChart"
       data={formatMapViewData(data)}
       options={{
