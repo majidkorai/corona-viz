@@ -31,7 +31,6 @@ export function getMapTitle(category) {
 
 export function formatWorldWideCasesChartData(data) {
   let chartData = getGroupedData(data);
-  console.log(chartData);
   chartData.sort(function(a, b) {
     return b.confirmed - a.confirmed;
   });
@@ -43,6 +42,20 @@ export function formatWorldWideCasesChartData(data) {
     ...transformedData
   ];
 }
+
+export function formatOverViewData(data) {
+  let transformedData = [
+    ["Confirmed", data.confirmed.latest],
+    ["Deaths", data.deaths.latest],
+    ["New Cases", data.deaths.latest],
+    ["Recovered", data.recovered.latest]
+  ]
+  return [
+    ['Label', 'Value'],
+    ...transformedData
+  ];
+}
+
 export function formatPieChartData(data) {
   let chartData = getGroupedData(data);
   let transformedData = chartData.map(c => {

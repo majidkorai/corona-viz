@@ -8,6 +8,7 @@ import "./App.css";
 import WorldWideCases from "./components/WorldwideCases";
 import MapViewGoogle from "./components/MapView";
 import PieChartView from "./components/PieChart";
+import OverView from "./components/Overview";
 import { formatTableViewData } from "./utils";
 import { css } from "@emotion/core";
 import ScaleLoader from "react-spinners/ScaleLoader";
@@ -48,6 +49,7 @@ function App() {
       <h1>Coronavirus (COVID-19) Global Statistics</h1>
       {!isFetching && (
         <div style={flexContainer}>
+          <OverView data={allData}></OverView>
           <MapViewGoogle data={allData}></MapViewGoogle>
           <PieChartView data={allData}></PieChartView>
           <WorldWideCases data={allData}></WorldWideCases>
@@ -62,8 +64,8 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {formatTableViewData(allData).map(c => (
-                  <tr>
+                {formatTableViewData(allData).map((c, index) => (
+                  <tr key={index}>
                     <td>{c.country}</td>
                     <td>{c.confirmed.toLocaleString()}</td>
                     <td>{c.recovered.toLocaleString()}</td>
