@@ -45,15 +45,11 @@ export function formatWorldWideCasesChartData(data) {
 
 export function formatOverViewData(data) {
   let transformedData = [
-    ["Confirmed", data.confirmed.latest],
-    ["Deaths", data.deaths.latest],
-    ["New Cases", data.deaths.latest],
-    ["Recovered", data.recovered.latest]
-  ]
-  return [
-    ['Label', 'Value'],
-    ...transformedData
+    ["Confirmed", data.latest.confirmed],
+    ["Deaths", data.latest.deaths],
+    ["Recovered", data.latest.recovered]
   ];
+  return [["Label", "Value"], ...transformedData];
 }
 
 export function formatPieChartData(data) {
@@ -61,10 +57,7 @@ export function formatPieChartData(data) {
   let transformedData = chartData.map(c => {
     return [c.country, c.confirmed];
   });
-  return [
-    ['Country', 'Cases'],
-    ...transformedData
-  ];
+  return [["Country", "Cases"], ...transformedData];
 }
 
 export function formatTableViewData(data) {
@@ -86,10 +79,15 @@ export function formatMapViewData(data) {
   return [["Country", "Cases"], ...transformedData];
 }
 
-function getCount(groupedDeaths, countryCode) {
-  const totalCases = groupedDeaths.get(countryCode).reduce((a, b) => {
-    return a + Number(b.latest);
-  }, 0);
+function getCount(groupedData, countryCode) {
+  // console.log(countryCode, groupedData);
+  const countryData = groupedData.get(countryCode);
+  // console.log(countryCode, countryData);
+  const totalCases = countryData
+    ? countryData.reduce((a, b) => {
+        return a + Number(b.latest);
+      }, 0)
+    : 0;
   return totalCases;
 }
 

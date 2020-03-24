@@ -10,10 +10,11 @@ function OverView({ data }) {
       loader={<div>Loading Chart</div>}
       data={formatOverViewData(data)}
       options={{
-        // title: "Over View",
-        // legend: "none",
-        // pieSliceText: "label",
-        // sliceVisibilityThreshold: 0.03
+        legend: { position: 'bottom' },
+        chartArea: {
+          width: '100%'
+        },
+        pieSliceText: "percentage",
       }}
       rootProps={{ "data-testid": "1" }}
     />

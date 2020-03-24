@@ -11,7 +11,7 @@ function PieChartView({ data }) {
       data={formatPieChartData(data)}
       options={{
         // title: "Country Wise Total Cases",
-        legend: 'none',
+        legend: { position: 'bottom' },
         pieSliceText: 'label',
         sliceVisibilityThreshold: 0.03
       }}
