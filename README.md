@@ -3,4 +3,4 @@
 
 This app fetches data from [coronavirus-tracker-api](https://github.com/ExpDev07/coronavirus-tracker-api)
 
-Note: this project was created using create-react-app.
+Note: Project was created using create-react-app.
